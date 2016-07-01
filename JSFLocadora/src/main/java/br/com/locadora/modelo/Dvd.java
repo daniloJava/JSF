@@ -23,8 +23,6 @@ public class Dvd {
 	@ManyToMany
 	private List<Cliente> todosClientes = new ArrayList<Cliente>();
 	
-	
-	
 	public List<Cliente> getClientes() {
 		return todosClientes;
 	}

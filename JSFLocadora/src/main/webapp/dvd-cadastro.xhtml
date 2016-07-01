@@ -11,14 +11,14 @@
 			<legend> Dados do DVD</legend>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Titulo" for="titulo" />
-				<h:inputText id="titulo" value="#{dvdBean.filme.titulo}"/>
+				<h:inputText id="titulo" value="#{dvd.filme.titulo}"/>
 				<h:outputLabel value="Categoria" for="categoria"/>
-				<h:inputText id="categoria" value="#{dvdBean.filme.categoria}"/>
+				<h:inputText id="categoria" value="#{dvd.filme.categoria}"/>
 				<h:outputLabel value="Preço" for="preco"/>
-				<h:inputText id="preço" value="#{dvdBean.filme.preço}"/>
+				<h:inputText id="preço" value="#{dvd.filme.preço}"/>
 				<h:outputLabel value="Data de lançamento" for="datalancamento"/>
-				<h:inputText id="datalancamento" value="#{dvdBean.filme.datalancamento}"/>
-				<h:commandButton value="Gravar" action="#{dvdBean.gravarDVD}"/>
+				<h:inputText id="datalancamento" value="#{dvd.filme.datalancamento}"/>
+				<h:commandButton value="Gravar" action="#{dvd.gravarDVD}"/>
 			</h:panelGrid>
 			
 		

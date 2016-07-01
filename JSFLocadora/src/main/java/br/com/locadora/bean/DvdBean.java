@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import br.com.locadora.dao.DAO;
 import br.com.locadora.modelo.Dvd;
 
-@ManagedBean
+@ManagedBean(name="dvd")
 public class DvdBean {
 
 	private Dvd filme = new Dvd();
@@ -16,7 +16,8 @@ public class DvdBean {
 
 	public void gravarDVD() {
 		System.out.println("Gravando" + this.filme.getTitulo());
-		new DAO<Dvd>(Dvd.class).adiciona(this.filme);
+		
+		new DAO<Dvd>(Dvd.class).adiciona(filme);
 		
 	}
 
