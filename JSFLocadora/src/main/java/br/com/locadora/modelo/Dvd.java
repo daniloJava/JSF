@@ -16,19 +16,18 @@ public class Dvd {
 	@Id @GeneratedValue
 	private Integer id;
 	private String titulo;
-	private String categoria;
 	private double preço;
 	private String datalancamento;
 	
 	@ManyToMany
-	private List<Cliente> todosClientes = new ArrayList<Cliente>();
+	private List<Categoria> todosClientes = new ArrayList<Categoria>();
 	
-	public List<Cliente> getClientes() {
+	public List<Categoria> getCategoria() {
 		return todosClientes;
 	}
 
-	public void adicionaCliente(Cliente cliente){
-		this.todosClientes.add(cliente);
+	public void adicionaCategoria(Categoria categoria){
+		this.todosClientes.add(categoria);
 	}
 	
 	public Integer getId() {
@@ -43,12 +42,7 @@ public class Dvd {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public String getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+	
 	public double getPreço() {
 		return preço;
 	}

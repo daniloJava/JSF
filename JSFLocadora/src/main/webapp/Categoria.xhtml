@@ -7,14 +7,14 @@
 	<h1>Novo Cliente</h1>
 	<h:form>
 		<fieldset>
-			<legend> Dados do Cliente</legend>
+			<legend> Dados da Categoria</legend>
 			<h:panelGrid columns="2">
-			<h:outputLabel value="Nome" for="nome" />
-			<h:inputText id="nome" value="#{clienteBean.cliente.nomeCliente}"/>
-			<h:commandButton value="Gravar" action="#{dvd.gravarDVD}"/>
+			<h:outputLabel value="Nome da Categoria" for="nome" />
+			<h:inputText id="nome" value="#{categBen.categoria.nomeCategoria}"/>
+			<h:commandButton value="Gravar" action="#{categBen.gravar}"/>
 			</h:panelGrid>
 		</fieldset>
-		
+
 	</h:form>
 
 </h:body>
