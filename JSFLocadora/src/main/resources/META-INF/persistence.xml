@@ -11,7 +11,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<!-- entidade mapeada -->
-		<class>br.com.locadora.modelo.Cliente</class>
+		<class>br.com.locadora.modelo.Categoria</class>
 		<class>br.com.locadora.modelo.Dvd</class>
  
 		<properties>
