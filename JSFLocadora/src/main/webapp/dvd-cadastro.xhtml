@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:body>
 	<h1>Novo DVD</h1>
@@ -12,18 +13,30 @@
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Titulo" for="titulo" />
 				<h:inputText id="titulo" value="#{dvd.filme.titulo}"/>
-				<h:outputLabel value="Categoria" for="categoria"/>
-				<h:inputText id="categoria" value="#{dvd.filme.categoria}"/>
+			
 				<h:outputLabel value="Preço" for="preco"/>
 				<h:inputText id="preço" value="#{dvd.filme.preço}"/>
 				<h:outputLabel value="Data de lançamento" for="datalancamento"/>
 				<h:inputText id="datalancamento" value="#{dvd.filme.datalancamento}"/>
-				<h:commandButton value="Gravar" action="#{dvd.gravarDVD}"/>
 			</h:panelGrid>
 			
-		
 		</fieldset>		
-	
+		
+		<fieldset>
+			<legend> Dados da categoria</legend>
+				<h:outputLabel value="Selecione a Categoria: " for="catego"/>
+				<h:selectOneMenu value="#{dvd.categoriaId}">
+					<f:selectItems value="#{dvd.categoria}" var="categ" 
+							itemLabel="#{categ.nomeCategoria}" itemValue="#{categ.idCategoria}"/>
+				</h:selectOneMenu>
+				<h:commandButton value="Gravar" action="#{dvd.gravarCategoria}"/>
+				<h:dataTable value="#{dvd.categoriasDoDvd}" var="categ">
+					<h:column>
+						<h:outputText value="#{categ.nomeCategoria}"/>
+					</h:column>
+				</h:dataTable>
+		 </fieldset>			
+		<h:commandButton value="Gravar" action="#{dvd.gravarDVD}"/>
 	</h:form>
 
 
