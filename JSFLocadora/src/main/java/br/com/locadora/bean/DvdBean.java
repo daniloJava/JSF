@@ -34,6 +34,11 @@ public class DvdBean {
 		return filme;
 	}
 	
+	public List<Dvd> getTabelaFilmes(){
+		return new DAO<Dvd>(Dvd.class).listaTodos();
+	}
+	
+	
 	public List<Categoria> getCategoria(){
 		return new DAO<Categoria>(Categoria.class).listaTodos();
 	}

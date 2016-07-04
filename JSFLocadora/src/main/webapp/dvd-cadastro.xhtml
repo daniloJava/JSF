@@ -44,7 +44,30 @@
 		<h:commandButton value="Gravar" action="#{dvd.gravarDVD}"/>
 	</h:form>
 	
-	
+	<h:dataTable value="#{dvd.tabelaFilmes}" var="movie">
+		<h:column>
+			<f:facet name="header">Id</f:facet>
+			<h:outputText value="#{movie.id}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{movie.titulo}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Preço</f:facet>
+			<h:outputText value="#{movie.preço}" >
+				<f:convertNumber type="currency" pattern="R$ #0,00" 
+						currencySymbol="R$" locale="pt_BR"></f:convertNumber>
+			</h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Data de Lançamento</f:facet>
+			<h:outputText value="#{movie.datalancamento.time}">
+				<f:convertDateTime pattern="dd/MM/YYYY" timeZone="America/Sao_Paulo" />
+			</h:outputText>
+		</h:column>
+		
+	</h:dataTable>
 
 </h:body>
 </html>
