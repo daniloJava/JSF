@@ -14,11 +14,12 @@ public class CategoriaBean {
 		return categoria;
 	}
 
-	public void gravar(){
+	public String gravar(){
 		System.out.println("Gravando categoria "+ this.categoria.getNomeCategoria());
 		new DAO<Categoria>(Categoria.class).adiciona(categoria);
 		
-		this.categoria = new Categoria();	
+		this.categoria = new Categoria();
+		return "dvd-cadastro?redirect=true";
 	}
 	
 	

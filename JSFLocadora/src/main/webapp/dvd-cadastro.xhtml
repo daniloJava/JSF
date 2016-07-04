@@ -47,10 +47,13 @@
 						<h:outputText value="#{categ.nomeCategoria}"/>
 					</h:column>
 				</h:dataTable>
+			<br />
+			<h:commandLink value="Cadastrar nova categoria" action="#{dvd.formCategoria}" immediate="true"/>
 		 </fieldset>			
 		<h:commandButton value="Gravar" action="#{dvd.gravarDVD}" >
 			<f:ajax execute="@form" render="@form :tabelaFilmes" />
 		</h:commandButton>
+		
 	</h:form>
 	
 	<h:dataTable value="#{dvd.tabelaFilmes}" var="movie" id="tabelaFilmes">

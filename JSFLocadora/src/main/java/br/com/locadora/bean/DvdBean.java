@@ -71,4 +71,7 @@ public class DvdBean {
 		throw new ValidatorException(new FacesMessage("Teste son"));	
 	}
 
+	public String formCategoria(){
+		return "Categoria?faces-redirect=true";
+	}
 }
