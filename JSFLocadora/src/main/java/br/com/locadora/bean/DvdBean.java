@@ -2,8 +2,12 @@ package br.com.locadora.bean;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import br.com.locadora.dao.DAO;
 import br.com.locadora.modelo.Categoria;
@@ -45,10 +49,20 @@ public class DvdBean {
 	public void gravarDVD() {
 		System.out.println("Gravando" + this.filme.getTitulo());
 		if(filme.getCategoria().isEmpty())
-			throw new RuntimeException("o Dvd precisa ter uma categoria");
+			FacesContext.getCurrentInstance().addMessage("catego", new FacesMessage("Não foi possive Gravar Insira uma Categoria"));
+		else
+			new DAO<Dvd>(Dvd.class).adiciona(filme);
 		
-		new DAO<Dvd>(Dvd.class).adiciona(filme);
+		this.filme = new Dvd();
+	}
+	
+	public void campoPrecoMaiorQueZero(FacesContext fc, UIComponent componente, 
+					Object valor) throws ValidatorException{
+		Double preco = (Double) valor;
+		System.out.println(preco);
+		System.out.println("agora vaiii");
 		
+		throw new ValidatorException(new FacesMessage("Teste son"));	
 	}
 
 }

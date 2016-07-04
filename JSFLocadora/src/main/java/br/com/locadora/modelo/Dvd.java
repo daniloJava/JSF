@@ -1,12 +1,15 @@
 package br.com.locadora.modelo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 
@@ -17,7 +20,8 @@ public class Dvd {
 	private Integer id;
 	private String titulo;
 	private double preço;
-	private String datalancamento;
+	@Temporal(TemporalType.DATE)
+	private Calendar datalancamento = Calendar.getInstance();
 	
 	@ManyToMany
 	private List<Categoria> todosClientes = new ArrayList<Categoria>();
@@ -49,12 +53,25 @@ public class Dvd {
 	public void setPreço(double preço) {
 		this.preço = preço;
 	}
-	public String getDatalancamento() {
+
+	public Calendar getDatalancamento() {
 		return datalancamento;
 	}
-	public void setDatalancamento(String datalancamento) {
+
+	public void setDatalancamento(Calendar datalancamento) {
 		this.datalancamento = datalancamento;
 	}
+
+	public List<Categoria> getTodosClientes() {
+		return todosClientes;
+	}
+
+	public void setTodosClientes(List<Categoria> todosClientes) {
+		this.todosClientes = todosClientes;
+	}
+	
+
+	
 
 	
 	

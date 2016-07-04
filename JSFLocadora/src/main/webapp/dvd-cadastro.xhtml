@@ -7,17 +7,22 @@
 <h:body>
 	<h1>Novo DVD</h1>
 	<h:form>
+		<h:messages />
 		<fieldset>
 			
 			<legend> Dados do DVD</legend>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Titulo" for="titulo" />
-				<h:inputText id="titulo" value="#{dvd.filme.titulo}"/>
-			
+				<h:inputText id="titulo" value="#{dvd.filme.titulo}" required="true" 
+					requiredMessage="Titulo Obrigatorio" validatorMessage="Não pode ter mais que 15 caracteres">
+					<f:validateLength maximum="15" />
+				</h:inputText>
 				<h:outputLabel value="Preço" for="preco"/>
-				<h:inputText id="preço" value="#{dvd.filme.preço}"/>
+				<h:inputText id="preço" value="#{dvd.filme.preço}" />
 				<h:outputLabel value="Data de lançamento" for="datalancamento"/>
-				<h:inputText id="datalancamento" value="#{dvd.filme.datalancamento}"/>
+				<h:inputText id="datalancamento" value="#{dvd.filme.datalancamento.time}">
+					<f:convertDateTime pattern="dd/MM/YYYY" timeZone="America/Sao_Paulo" />
+				</h:inputText>
 			</h:panelGrid>
 			
 		</fieldset>		
@@ -38,8 +43,8 @@
 		 </fieldset>			
 		<h:commandButton value="Gravar" action="#{dvd.gravarDVD}"/>
 	</h:form>
-
-
+	
+	
 
 </h:body>
 </html>
