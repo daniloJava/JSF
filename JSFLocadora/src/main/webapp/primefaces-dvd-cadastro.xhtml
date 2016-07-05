@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<ui:composition template="_template.xhtml">
+	<ui:define name="titulo">
+		Novo DVD
+		<p:themeSwitcher value="#{temaBean.tema}"
+			style="position: absolute; right: 10px;">
+			<f:selectItems value="#{temaBean.temas}" />
+		</p:themeSwitcher>
+	</ui:define>
+	<ui:define name="conteudo" >
+	<h:form>
+		<p:messages id="Messages" autoUpdate="true"/>
+		<p:growl autoUpdate="true" />
+		<p:fieldset legend="Dados do DVD">
+
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Titulo" for="titulo" />
+				<p:inputText id="titulo" value="#{dvd.filme.titulo}" required="true"
+					requiredMessage="Titulo Obrigatorio"
+					validatorMessage="Não pode ter mais que 15 caracteres">
+					<f:validateLength maximum="15" />
+					<f:ajax event="blur" render="Messages" />
+				</p:inputText>
+				<h:outputLabel value="Preço" for="preco" />
+				<p:inputText id="preço" value="#{dvd.filme.preço}" />
+				<h:outputLabel value="Data de lançamento" for="datalancamento" />
+				<p:calendar id="datalancamento"
+					value="#{dvd.filme.datalancamento.time}" pattern="dd/MM/YYYY"
+						timeZone="America/Sao_Paulo" />
+			</h:panelGrid>
+
+		</p:fieldset>
+		<br />
+		<p:fieldset legend="Dados da Categoria">
+			<h:outputLabel value="Selecione a Categoria: " for="catego" />
+			<p:commandLink value="Cadastrar nova categoria"
+				action="#{dvd.formCategoria}" immediate="true" />
+				<br/>
+			<p:selectOneMenu value="#{dvd.categoriaId}" id="categoria">
+				<f:selectItems value="#{dvd.categoria}" var="categ"
+					itemLabel="#{categ.nomeCategoria}" itemValue="#{categ.idCategoria}" />
+			</p:selectOneMenu>
+			
+			<p:commandButton value="Gravar Categoria" action="#{dvd.gravarCategoria}" 
+				process="@this categoria" update="tabelaCategoria" />
+		
+			<p:dataTable value="#{dvd.categoriasDoDvd}" var="categ"
+				id="tabelaCategoria" emptyMessage="Nenhuma Categoria associada">
+				<p:column>
+					<f:facet name="header">Categoria</f:facet>
+					<h:outputText value="#{categ.nomeCategoria}" />
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		<p:commandButton value="Gravar" action="#{dvd.gravarDVD}">
+			<f:ajax execute="@form" render="@form :tabelaFilmes" />
+		</p:commandButton>
+
+	</h:form>
+	<br /> <br /> <br />
+	<p:dataTable value="#{dvd.tabelaFilmes}" var="movie" id="tabelaFilmes"
+		paginator="true" rows="5">
+		<p:column>
+			<f:facet name="header">Id</f:facet>
+			<h:outputText value="#{movie.id}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{movie.titulo}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">Preço</f:facet>
+			<h:outputText value="#{movie.preço}">
+				<f:convertNumber type="currency" pattern="R$ #0,00"
+					currencySymbol="R$" locale="pt_BR"></f:convertNumber>
+			</h:outputText>
+		</p:column>
+		<p:column>
+			<f:facet name="header">Data de Lançamento</f:facet>
+			<h:outputText value="#{movie.datalancamento.time}">
+				<f:convertDateTime pattern="dd/MM/YYYY" timeZone="America/Sao_Paulo" />
+			</h:outputText>
+		</p:column>
+
+	</p:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>
