@@ -14,11 +14,16 @@
 		<h1>
 			<ui:insert name="titulo"></ui:insert>
 		</h1>
+		
 		<h:form>
 			<p:menubar>
 				<p:submenu label="Cadastro">
-					<p:menuitem value="DVD" action="dvd-cadastro" />
+					<p:menuitem value="DVD JSF" action="dvd-cadastro" />
+					<p:separator />
 					<p:menuitem value="CATEGORIA" action="Categoria" />
+					<p:separator />
+					<p:menuitem value="DVD PRIMEFACES" action="primefaces-dvd-cadastro" />
+					
 				</p:submenu>
 			</p:menubar>
 		</h:form>

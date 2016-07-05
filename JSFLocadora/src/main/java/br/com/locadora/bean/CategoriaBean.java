@@ -19,7 +19,7 @@ public class CategoriaBean {
 		new DAO<Categoria>(Categoria.class).adiciona(categoria);
 		
 		this.categoria = new Categoria();
-		return "dvd-cadastro?redirect=true";
+		return "dvd-cadastro?faces-redirect=true";
 	}
 	
 	
